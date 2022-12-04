@@ -1,0 +1,12 @@
+.main {
+    margin: 20px
+}
+
+.cards-list {
+    font-size: 0.8em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
