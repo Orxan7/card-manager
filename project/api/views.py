@@ -38,7 +38,7 @@ def card_model_detail(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CardSerializer(snippet, data=request.data)
+        serializer = CardSerializer(snippet, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
