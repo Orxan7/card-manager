@@ -8,9 +8,19 @@
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
 }
 
 .input-group {
-    width: 40% !important;
+    min-width: 350px;
+    width: 20% !important;
+}
+
+.search-generate {
+    display: flex;
+    gap: 20px;
+}
+
+.h4-generate{
+    padding-top: 3px;
 }
