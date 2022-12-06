@@ -29,11 +29,17 @@ const CardsListPage = () => {
         }
     }
 
+    const csrf = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken'))
+        .split('=')[1];
+
     const generate = (seria, value, month)=>{
-        fetch(`http://127.0.0.1:8000/api/cards/`, {
+        fetch(`/api/cards/`, {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "X-CSRFToken": csrf
             },
             body: JSON.stringify({
                 seria: seria,
@@ -45,8 +51,9 @@ const CardsListPage = () => {
         }).then(()=>{setChange(1)})
     }
 
+
     let getCards = async () => {
-        let response = await fetch('http://127.0.0.1:8000/api/cards/')
+        let response = await fetch('/api/cards/')
         let data = await response.json()
         setCards(data)
     }
@@ -60,20 +67,22 @@ const CardsListPage = () => {
 
     const deleteCard = (event)=>{
         const key = (event.target.parentElement.parentElement).childNodes[6].firstChild.getAttribute('key-atr');
-        fetch(`http://127.0.0.1:8000/api/cards/${key}/`, {
+        fetch(`/api/cards/${key}/`, {
             method: "DELETE",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "X-CSRFToken": csrf
             }
         }).then(() => {setChange(1)})
     }
 
     const putStatus = () =>{
         array.map((item)=>{
-            fetch(`http://127.0.0.1:8000/api/cards/${item.id}/`, {
+            fetch(`/api/cards/${item.id}/`, {
                 method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    "X-CSRFToken": csrf
                 },
                 body: JSON.stringify({
                     status: item.val,

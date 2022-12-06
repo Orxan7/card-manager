@@ -1,6 +1,7 @@
 import moment from "moment/moment";
 import CloseButton from "react-bootstrap/CloseButton";
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 
 
 export default function TableData ({ cards, deletecard, activeChange }) {
@@ -25,8 +26,9 @@ export default function TableData ({ cards, deletecard, activeChange }) {
                 moment(item.expiry_date).format('YYYY/MM/DD h:mm:ss a').includes(searchValue)
             ).map((card)=>(
                 <tr key={card.id}>
+
                     <td>{card.seria}</td>
-                    <td>{card.number}</td>
+                    <td><Link to={`/cards/${card.id}`}>{card.number}</Link></td>
                     <td>{moment(card.release_date).format('YYYY/MM/DD h:mm:ss a')}</td>
                     <td>{moment(card.expiry_date).format('YYYY/MM/DD h:mm:ss a')}</td>
                     <td>{moment(card.use_date).format('YYYY/MM/DD h:mm:ss a')}</td>
@@ -38,8 +40,9 @@ export default function TableData ({ cards, deletecard, activeChange }) {
                     </select>
                     </td>
                     <td><CloseButton onClick={deletecard}/></td>
+
                 </tr>
-            ))}
+        ))}
         </tbody>
     );
 };
