@@ -1,15 +1,15 @@
 # card-manager
 
-Сначала создадим окружение виртуальное<br>
+First, let's create a virtual environment<br>
 `python3 -m venv env`<br>
-Скачаем все библиотеки нужные<br>
+Download all required libraries<br>
 `pip install -r requirements.txt`<br>
-Перейдем в папку project/frontend и скачем все нужные библиотеки и соберем все<br>
+Let's go to the project/frontend folder and download all the necessary libraries and collect everything<br>
 `cd project/frontend`<br>
 `npm install`<br>
 `npm run build`<br>
-Делаем миграцию<br>
+Making a migration<br>
 `python3 manage.py migrate`<br>
-И запускаем сервер <br>
+And start the server <br>
 `python3 manage.py runserver`
 
